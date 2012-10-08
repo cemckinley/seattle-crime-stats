@@ -1,0 +1,312 @@
+/* ----- DEFAULTS & UTILITY ----- */
+
+html{
+	width:100%;
+	height:100%;
+}
+
+body {
+  	background: #FCFBFA;
+	width:100%;
+	height:100%;
+  	margin: 0;
+  	font: 16px Helvetica;
+	line-height: 22px;
+  	text-align: center;
+	color:#423C37;
+	font-family: 'Didot', Georgia, Serif;
+}
+
+h1{
+	font-size:1.5em;
+	margin:0 0 1.2em 0;
+	font-weight:bold;
+}
+h2{
+	font-size:1.3em;
+	margin:0 0 1.2em 0;
+	font-weight:normal;
+}
+h3{
+	font-size:1em;
+	font-family:'Futura-Medium', 'Helvetica', Sans-Serif;
+}
+h4{
+	font-size:.8em;
+	text-transform:uppercase;
+	font-family:'Futura-Medium', 'Helvetica', Sans-Serif;
+}
+
+a{
+	color:#000;
+	text-decoration:none;
+}
+hr{
+	height:1px;
+	border:none;
+	background:#CECAC6;
+	margin:0 0 20px 0;
+}
+
+.app_button, button {
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	display: inline-block;
+	padding: 3px 20px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	width: 180px;
+	background:#423C37;
+	font-size: .9em;
+	text-transform:uppercase;	
+	font-family:'Futura-Medium', 'Helvetica', Sans-Serif;
+	font-weight:normal;
+	height: 30px;
+	line-height: 30px;
+	color:#fff;
+	text-decoration:none;
+	text-align: center;
+	-webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, .2);
+	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, .2);
+}
+.app_button:hover, button:hover{
+	background:#423C37;
+}
+.app_button.ui-link{
+	color:#fff;
+}
+.ui-btn-corner-all{
+	-webkit-border-radius: 0px;
+	border-radius: 0px;	
+}
+
+label.ui-select{
+	width:220px;
+	margin:0;
+}
+.ui-select{
+	margin:0 0 10px 0;
+	width:220px;
+}
+	.ui-select .ui-btn-up-c,
+	.ui-select .ui-btn-hover-c
+	{
+		background:#FAF5F2;
+		-webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, .2);
+		box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, .2);
+		color:#423C37;
+		border:none;
+		font-size:.7em;
+		font-weight:normal;
+		text-shadow:none;
+		font-family:'Futura-Medium', 'Helvetica', Sans-Serif;
+		text-transform:uppercase;
+	}
+.ui-field-contain{
+	margin:0 0 10px 0;
+	padding:0;
+}
+.ui-controlgroup-horizontal .ui-controlgroup-controls{
+	display:inline-block;
+	width:auto;
+	-webkit-box-shadow: inset 0px 0px 3px 1px rgba(0, 0, 0, .15);
+	box-shadow: inset 0px 0px 3px 1px rgba(0, 0, 0, .15);
+	padding:1px;
+	margin:0;
+}
+.ui-controlgroup-horizontal .ui-controlgroup-label{
+	display:block;
+	margin:0 auto 10px auto;
+}
+	.ui-controlgroup-horizontal .ui-checkbox label.ui-btn,
+	.ui-controlgroup-horizontal .ui-checkbox label.ui-btn-hover-cs,
+	.ui-controlgroup-horizontal .ui-radio label.ui-btn,
+	.ui-controlgroup-horizontal .ui-radio label.ui-btn-hover-cs
+	{
+		font-size:.7em;
+		font-weight:normal;
+		text-shadow:none;
+		background: #FCFBFA;
+		font-family:'Futura-Medium', 'Helvetica', Sans-Serif;
+		text-transform:uppercase;
+		-webkit-border-radius:0;
+		border-radius:0;
+		margin:3px;
+		color:#877F7A;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	.ui-controlgroup-horizontal .ui-checkbox .ui-btn.ui-btn-active,
+	.ui-controlgroup-horizontal .ui-radio .ui-btn.ui-btn-active
+	{
+		background:#FAF5F2;
+		-webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, .2);
+		box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, .2);
+		color:#423C37;
+		border:none;
+	}
+
+.ui-loader { 
+	display: none; 
+	position: absolute;
+	z-index: 100; 
+	left: 50%; 
+	width: 40px; 
+	margin-left: -30px; 
+	margin-top: -35px; 
+	padding: 10px;
+}
+	.ui-loader h1{
+		display:none;
+	}
+
+	
+
+/* ----- LAYOUT / CUSTOM THEME ('cs') ----- */
+
+.ui-header .ui-title{
+	font-size:1.2em;
+	margin: .6em 90px .7em;
+	padding:.1em 0 0 0;
+}
+.ui-bar-cs{
+	background:#FAF5F2;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, .2);
+	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, .2);
+}
+	.ui-bar-cs .backButton.ui-btn-up-cs,
+	.ui-bar-cs .backButton.ui-btn-hover-cs
+	{
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			background:#423C37;
+			font-family:'Futura-Medium', 'Helvetica', Sans-Serif;
+			font-size:.7em;
+			font-weight:normal;
+			text-transform:uppercase;
+			color:#FCFBFA;
+			-webkit-border-radius:0;
+			border-radius:0;
+			border:none;
+			margin:5px 0 0 0;
+			-webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, .2);
+			box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, .2);
+	}
+		.ui-bar-cs .backButton.ui-btn-up-cs span.ui-btn-inner,
+		.ui-bar-cs .backButton.ui-btn-hover-cs span.ui-btn-inner
+		{
+			border:none;
+			-webkit-border-radius:0;
+			border-radius:0;
+		}
+.content {
+	padding:20px;
+}
+.ui-footer.ui-bar-cs{
+	background: #FCFBFA;
+	padding-top:6px;
+	-webkit-box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, .2);
+	box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, .2);
+}
+	.ui-footer .ui-btn-up-cs, .ui-footer .ui-btn-hover-cs{
+		-webkit-border-radius:0;
+		border-radius:0;
+		-webkit-box-shadow: 0px 0px 3px  1px rgba(0,0,0,.3);
+		box-shadow: 0px 0px 3px 1px rgba(0,0,0,.3);
+		background:#FAF5F2;
+		font-family:'Futura-Medium', 'Helvetica', Sans-Serif;
+		text-transform:uppercase;
+		font-weight:normal;
+		font-size:.6em;
+	}
+
+/* ----- PAGE SPECIFIC ----- */
+
+/* -- welcome page -- */
+
+#welcome {
+}
+	#maxResults{
+		text-align:center;
+	}
+		#maxResults label.ui-select{
+			display:inline-block;
+		}
+		#maxResults div.ui-select{
+			width:110px;
+			margin:0 auto 20px auto;
+		}
+
+/* -- about page -- */
+#about{
+	text-align:left;
+}
+	#about p{
+		font-size:.8em;
+	}
+	#about p.intro{
+		font-size:1em;
+	}
+
+/* -- Crime List page -- */
+
+#crimeDataList .content{
+	padding:0;
+}
+	#crimeReportList{
+		list-style-type:none;
+		text-align:left;
+		padding:0;
+		margin:0;
+	}
+		#crimeReportList li{
+			display:block;
+			width:100%;
+			margin:0;
+			padding:0;
+			border-bottom:1px solid #CECAC6;
+		}
+			#crimeReportList a.detailLink{
+				display:block;
+				padding:1em 7%;
+				background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABg5JREFUeNqcVltTU1cUXjk5IQlgEiBcCig6Ci0IAiMCgmYEJToVxtpO7dif0D77AzptH/rWzvSp77Ud+6BWrFbEtiAqaMvFlIslyEAuECAhJCHXc9K1Nvs4BIPNdM98k8k+e+9vr7W+tfZSQeZDteNXGckdvxkd8qYhEE5aLPl5eXkNoijWq1QqI32QZXkhFouN3+7tHcO/Ekfy/xISkdjd09Op0+k+FQShu7CwEAwGA9AvDYfDARsbGwQ/kvf6vN4v+/v7ZzmxnCkhzYkdHR2VBWbzdyaTqb2xoQFqamogiXePRKPg9/tBp9WCVqcDk9EAKysrMDo2BpOTk4AWf3Xj+vUv8IxIOotVacg0XV1dzXn5+b2NjY3G1pYW8PrW0RonBIOhtK4oKSlmUAsquNfXBwsLC7aZmZnzzycm3Pg5sZ1UvdOy02fOtCLZ7bNWq7G2thbGxm3gdLogipYl0cR0CAQC4HYvgaBWg+XkCQgEg0XoYqtKEHpXPJ7QboRibV1dWUVFxQCRle/dC8PDzyAcDu9KtBPr637weFagvb0NfD5fEc6VTU9N3cWz4wqpept12e0nTnxbVVV1tKW5BR4+fETxICWClEhAJBKGeDyWAklKACqWrVEQiUSY69uOt8Ks3X7YaDT+NT8/P8ddC6Ji6dGmpurc3NxL1q4uGHn6DDdGU+IURLfFE3Goqnr71ZzT6WAE2dk5KWtdLjcUFxUCxR8t/QynBhB0oCRw67JKS0s/OXjwIIsHuUWSpBTsMRhBjTHaDIWgru4IQ+fpM7g5iRYFXls/OTXNlI25W9107FgriZG4BJ5vqHKttaa6Gl7OL7y2WUFurgFcbheMDD9BgQiA+Qmnu6yoTgEvEkxZGwgEmaVkhNlsPocc2hRCTOzS8vJyWFxcZLGJRiMQwpvvhIBbXr6cg+HHj5FIDXqdHqxnz4FGI0J4M8T2Klj2eKC8rIwu1swJBYqhcKqjo50qSCwWfxW7WCwK9fUNUFBQsGspkmQJsrKyQC/q4dy75+HunV9Q1REkz2LfvWteKDQXkLAMFDaykBHKkiQSIQaYuYNVYjnJSthbpaUZVXassdDd3QM//nCVKVeFnpDkreqm0WgOcYFywmRSoJqYl2dCaW8RykmZiURUqzN+TgafPMYL4z6R8lLCS28RohHLXJyMMDlnt79AlTL30E0p/2jcuvVz2oPpILL+4vsfsD007t/vg39mZ5k7ZU6UnZPNKlQikVhWEp8EI7tcrnVMbg8V4SLMH0p0+kyi2AlyVWFREXx46RLk5OSQu+BBfz/MTM8wQdFeBcXFReBwOqlazSmFXODPSCQciYxNTk1B5aFD6M5kWpBIzCiiy5c/RrJc5o2+e79izk2i3oWUtSJeZH9FBdjtdlj3+cZ5eZNFhdDtct3B58VK1YFiubq69tozotNpwWKxwNraKpubmJiA5zYb+6qITRm1h2uwgHjA6/WujIyM/M4rTVIhDI+Ojg7t3bfPhu9abcepU3Djxk2I8lgyQmTcxEJ+7adrKc1FMk13YcZUaGo6Ct9fvQoup5M2rHNCebsENZubmw6s8GePHKnTYHWAuTl0Pb26b3ghYAfI5RffuwBDjx6BzWabwvh+Tc0Bwk9xVG9rgGRMjYjRZJKXlpdb6YZVVZUYgzlSWUbPEyn9woUeFrfBwcHN3x48uIIqfYFne3gHACmEBMfiolOv10exLB0rKSmBzs4OzCuRtRFEnG5Q0bBYTkJrazP8MTCAT9vD1fHx8c/dbvef9HggQlylKS2GwOudGbEPi257fX39lf0HDphJSFRnqc0gmStDizlI8wbDHmbVk+FhfLKco0NDQ99s+P2TuGQR4aNKqQRalaZT0yHyEFTTyo+3tX2ElnZhTc3fOtyQsoE6N0IoFMK8n705Mz09wGPm4nGLbe/gVLu0h1Q+9iCoHyxH5KOl7yBxDeZeDnZylejecCgYdKByV5Dw7+WlpXlcR/lCLqCcCiq5l0lfquLFllxsojBx5PCHVM1dJHELKEYb3KIN5XVP1xSrMujM1Zw8i5OJ2/bJvFeJcyT+q/v+V4ABAKDQkjEDQCGjAAAAAElFTkSuQmCC) no-repeat 95% 50%;
+			}
+			#crimeReportList .offenseType{
+				display:block;
+				font-size:.9em;
+			}
+			#crimeReportList .offenseDate{
+				display:block;
+				font-size:.8em;
+				color:#666;
+			}
+			#crimeReportList .offenseBlock{
+				display:block;
+				font-size:.8em;
+				color:#666;
+			}
+	#getNextItems{
+		display:block;
+		clear:both;
+		margin:15px auto;
+	}
+
+/* -- map page -- */
+
+#map { 
+  text-shadow: 0 1px 0 #fff;
+}
+#map_canvas{
+	display:inline-block;
+	width:90%;
+	margin:0 auto 10px auto;
+	border: 2px solid #ddd;
+	overflow:hidden;
+}
+#crimeMap .offenseDate, #crimeMap .offenseBlock{
+	display:block;
+	width:95%;
+	margin:0 auto;
+	font-size:.9em;
+	text-align:left;
+}

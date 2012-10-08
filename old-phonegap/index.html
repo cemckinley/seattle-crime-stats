@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
+		<title>Nonesuch App</title>
+		
+		<link rel="stylesheet" href="_ui/css/jquery.mobile-1.0b3.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="_ui/css/main.css" type="text/css" media="screen" />
+		
+		<script src="_ui/js/lib/phonegap.0.9.5.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="_ui/js/lib/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="_ui/js/jqm-customize.js" type="text/javascript" charset="utf-8"></script>
+		<script src="_ui/js/lib/jquery.mobile-1.0b3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+		<script src="_ui/js/main.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+	</head>
+	<body>
+
+		<!-- HOME PAGE -->
+		<div id="welcome" class="view" data-role="page" data-theme="cs">
+			<div data-role="header" class="pageHeader" data-theme="cs">
+				<h1>Seattle Crime</h1>
+			</div>
+			
+			<div data-role="content" class="content">
+				<a href="#" class="app_button" id="getDataBtn">Get Latest Reports</a>
+				<hr />
+				
+				<h2>[ Settings ]</h2>
+				<div data-role="fieldcontain">
+					<fieldset id="orderResultsBy" data-role="controlgroup" data-type="horizontal">
+						<legend>Order list view by:</legend>
+						<input type="radio" name="orderBy" id="orderByDate" value="date" checked="checked" /><label for="orderByDate" data-theme="cs">Date</label>
+						<input type="radio" name="orderBy" id="orderByDistance" value="distance" /><label for="orderByDistance" data-theme="cs">Distance</label>
+					</fieldset>
+				</div>
+				
+				<div data-role="fieldcontain" id="maxResults">
+					<label for="selectMaxResults" class="select">Max Results:</label><br />
+					<select name="selectMaxResults" id="selectMaxResults">
+						<option value="100">100</option>
+						<option value="500">500</option>
+						<option value="1000" selected="selected">1000</option>
+						<option value="5000">5000</option>
+					</select>
+				</div>
+
+			</div>
+			
+			<div data-role="footer" data-position="fixed" data-theme="cs">
+				<a href="#about" data-icon="info" data-theme="cs">About</a>
+			</div>
+		</div>
+		
+		<!-- ABOUT/DISCLAIMER PAGE -->
+		<div id="about" class="view" data-role="page" data-theme="cs">
+			<div data-role="header" class="pageHeader">
+				<a href="#welcome" class="backButton" data-direction="reverse" data-icon="arrow-l" data-transition="slide">Back</a>
+				<h1>About</h1>
+			</div>
+			
+			<div data-role="content" class="content">
+				<h2>Terms &amp; Conditions</h2>
+				<p class="intro">All data appearing in this app is sourced from the City of Seattle's open data API.</p>
+				
+				<hr />
+				
+				<h3>Data Policy</h3>
+				<p>The data made available here has been modified for use from its original source, which is the City of Seattle. Neither the City of Seattle nor the Office of the Chief Technology Officer (OCTO) makes any claims as to the completeness, timeliness, accuracy or content of any data contained in this application; makes any representation of any kind, including, but not limited to, warranty of the accuracy or fitness for a particular use; nor are any such warranties to be implied or inferred with respect to the information or data furnished herein. The data is subject to change as modifications and updates are complete. It is understood that the information contained in the web feed is being used at one's own risk.</p>
+				<h3>Right to Discontinue Feeds</h3>
+				<p>The City of Seattle reserves the right to discontinue providing any or all of the data feeds at any time and to require the termination of any and all displaying, distributing or otherwise using any or all of the data for any reason including, without limitation, violation of any provision of these Terms of Use. The developer of this application is not responsible for any discontinuation or modifications of the data resulting from the actions of the City of Seattle.</p>
+				
+				<hr />
+				<p>Seattle Crime Stats mobile application &copy;2011 Cara McKinley.</p>
+			</div>
+		</div>
+		
+		<!-- CRIME DATA LIST PAGE -->
+		<div id="crimeDataList" class="view" data-role="page" data-theme="cs">
+			<div data-role="header" class="pageHeader" data-theme="cs">
+				<a href="#welcome" class="backButton" data-direction="reverse" data-icon="arrow-l" data-theme="cs" data-transition="slide">Back</a>
+				<h1>Recent Crimes</h1>
+			</div>
+			<div data-role="content" class="content" data-theme="cs">
+			</div>
+			<div data-role="footer" data-position="fixed" data-theme="cs">
+				<a href="#about" data-icon="info" data-theme="cs">About</a>
+			</div>
+		</div>
+		
+		<!-- INDIVIDUAL CRIME MAP -->
+		<div id="crimeMap" class="view" data-role="page" data-theme="cs">
+			<div data-role="header" class="pageHeader" data-theme="cs">
+				<a href="#crimeDataList" class="backButton" data-direction="reverse" data-icon="arrow-l" data-theme="cs" data-transition="slide">Back</a>
+				<h1>Crime Map</h1>
+			</div>
+			<div data-role="content" class="content" data-theme="cs">
+				<h2 class="offenseType"></h2>
+				<div id="map_canvas">
+				</div>
+				<span class="offenseDate"><strong>Date: </strong></span>
+				<span class="offenseBlock"><strong>Block: </strong></span>
+			</div>
+		</div>
+		
+	</body>
+</html>

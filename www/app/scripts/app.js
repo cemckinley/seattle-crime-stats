@@ -21,8 +21,9 @@ define([
 
 		init: function(){
 
+			// routers
 			this.router = new Router();
-			this.router.init();
+			Backbone.history.start();
         }
 
 	};

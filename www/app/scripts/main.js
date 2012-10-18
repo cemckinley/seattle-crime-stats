@@ -14,16 +14,25 @@
 
 require.config({
   shim: {
+ 	'backbone': {
+        deps: ['underscore', 'jquery'],
+        exports: 'Backbone'
+    },
+    'underscore': {
+		exports: '_'
+    }
   },
 
 paths: {
-    backbone: '../../components/backbone/backbone',
-    underscore: '../../components/underscore/underscore',
-
+    backbone: 'vendor/backbone',
+    underscore: 'vendor/underscore-min',
     jquery: 'vendor/jquery.min'
   }
 });
  
-require(['app'], function(app) {
-	app.init();
+require(['app', 'jquery'], function(app, $) {
+
+	$(function(){
+		app.init();
+	});
 });

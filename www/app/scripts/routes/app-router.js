@@ -15,26 +15,28 @@ define([
     'underscore',
     'backbone'
 ], function($, _, Backbone){
-
 	var AppRouter = Backbone.Router.extend({
 
 		routes: {
-	      '/': 'showHome',
-	      '/crime-list': 'showCrimeList',
+	      '': 'home',
+	      'crime-list': 'crimeList',
 	      // Default
 	      '*actions': 'defaultAction'
 	    },
 
-	    init: function(){
-			Backbone.history.start();
+	    initialize: function(){
+			console.log('init');
+
+			this.on('route:home', _.bind(this.showHome, this));
+			this.on('route:crimeList', _.bind(this.showCrimeList, this));
 	    },
 
 	    showHome: function(){
-
+			console.log('showing home');
 	    },
 
 	    showCrimeList: function(){
-
+			console.log('showing crimes');
 	    },
 
 	    defaultAction: function(){

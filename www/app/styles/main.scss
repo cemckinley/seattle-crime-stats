@@ -3,11 +3,17 @@
 
 /* ----- LAYOUT / CUSTOM THEME ('cs') ----- */
 
+body{
+	overflow-x: hidden;
+}
+
 .page{
 	position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-transform:translate3d(0,0,0);
+    left: 100%;
+
+    @include transform(translate3d(0,0,0));
 
     .pageHeader{
 		background:#FAF5F2;
@@ -33,18 +39,15 @@
 		.backBtn{
 			-webkit-box-shadow: none;
 			box-shadow: none;
-			background:#423C37;
-			font-family:'Futura-Medium', 'Helvetica', Sans-Serif;
+			background: $textColor;
+			font-family: $fontSansSerif;
 			font-size:.7em;
 			font-weight:normal;
 			text-transform:uppercase;
-			color:#FCFBFA;
-			-webkit-border-radius:0;
-			border-radius:0;
+			color: $accentColor;
 			border:none;
 			margin:5px 0 0 0;
-			-webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, .2);
-			box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, .2);
+			@include box-shadow(0px 0px 4px 1px rgba(0, 0, 0, .2));
 		}
 	}
 
@@ -53,20 +56,26 @@
 	}
 	.footer{
 		background: #FCFBFA;
-		padding-top:6px;
-		-webkit-box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, .2);
-		box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, .2);
+		padding: 6px 0 0 0;
+		height: 36px;
+		width: 100%;
+		position: fixed;
+		bottom: 0px;
+		left: 0px;
+		@include box-shadow(0px -2px 3px 0px rgba(0, 0, 0, .2));
 
 		.btn{
-			-webkit-border-radius:0;
-			border-radius:0;
-			-webkit-box-shadow: 0px 0px 3px  1px rgba(0,0,0,.3);
-			box-shadow: 0px 0px 3px 1px rgba(0,0,0,.3);
-			background:#FAF5F2;
-			font-family:'Futura-Medium', 'Helvetica', Sans-Serif;
+			display: inline-block;
+			width: auto;
+			margin: 0;
+			@include box-shadow(0px 0px 3px  1px rgba(0,0,0,.3));
+			background: $accentColor;
+			font-family: $fontSansSerif;
 			text-transform:uppercase;
 			font-weight:normal;
 			font-size:.6em;
+			font-weight: bold;
+			color: $textColor;
 		}
 	}
 
@@ -98,7 +107,7 @@
 		display:inline-block;
 	}
 	.selectWrap{
-		margin:0 auto 20px auto;
+		margin:0 auto 10px auto;
 	}
 }
 

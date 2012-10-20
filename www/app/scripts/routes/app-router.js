@@ -7,7 +7,6 @@
  *
  *	@description router for backbone app; handles user navigation through panels
  *
- *	@author CM
  */
 
 define([
@@ -19,7 +18,9 @@ define([
 
 		routes: {
 		  '': 'showHome',
-		  'crime-list': 'showCrimeList'
+		  'crime-list': 'showCrimeList',
+		  'crime-map': 'showCrimeMap',
+		  'about': 'showAbout'
 		},
 
 		initialize: function(){
@@ -27,18 +28,26 @@ define([
 
 			this.pageHistory = []; // store page history to determine left/right panel action
 			this.currentPage = null;
+			this.homePage = '#pageHome';
+			this.aboutPage = '#pageAbout';
+			this.crimeList = '#pageCrimeList';
+			this.crimeMap = '#pageCrimeMap';
 		},
 
 		showHome: function(){
-			console.log('showing home');
+			this.slidePage(this.homePage);
 		},
 
 		showCrimeList: function(){
-			console.log('showing crimes');
+			this.slidePage(this.crimeList);
 		},
 
-		defaultAction: function(){
+		showCrimeMap: function(){
+			this.slidePage(this.crimeMap);
+		},
 
+		showAbout: function(){
+			this.slidePage(this.aboutPage);
 		},
 
 		/**
@@ -47,51 +56,44 @@ define([
 		 * @param  {object} page [backbone view of page]
 		 */
 		slidePage: function(page) {
-			var slideFrom,
-				self = this;
+			var pageEl = $(page),
+				slideFrom;
 
 			if (!this.currentPage) {
 				// If there is no current page (app just started) -> No transition: Position new page in the view port
-				$(page.el).attr('class', 'page stageCenter');
-				$('#content').append(page.el);
+				pageEl.attr('class', 'page stageCenter');
 				this.pageHistory = [window.location.hash];
 				this.currentPage = page;
 				return;
 			}
 
-			// Cleaning up: remove old pages that were moved out of the viewport
-			$('.stageRight, .stageLeft').not('#searchPage').remove();
+			// Cleaning up: remove classes from pages that were moved out of the viewport
+			$('.stageRight, .stageLeft').removeClass('.stageLeft, .stageRight, .stageCenter');
 
 			if (page === this.homePage) {
 				// Always apply a Back (slide from left) transition when we go back to the home page
 				slideFrom = 'left';
-				$(page.el).attr('class', 'page stageLeft');
+				pageEl.attr('class', 'page stageLeft');
 				this.pageHistory = [window.location.hash];
 
 			} else if (this.pageHistory.length > 1 && window.location.hash === this.pageHistory[this.pageHistory.length - 2]) {
 				// The new page is the same as the previous page -> Back transition
 				slideFrom = 'left';
-				$(page.el).attr('class', 'page stageLeft');
+				pageEl.attr('class', 'page stageLeft');
 				this.pageHistory.pop();
 
 			} else {
 				// Forward transition (slide from right)
 				slideFrom = 'right';
-				$(page.el).attr('class', 'page stageRight');
+				pageEl.attr('class', 'page stageRight');
 				this.pageHistory.push(window.location.hash);
 			}
 
-			$('#content').append(page.el);
-
-			// Wait until the new page has been added to the DOM...
-			setTimeout(function() {
-				// Slide out the current page: If new page slides from the right -> slide current page to the left, and vice versa
-				$(self.currentPage.el).attr('class', 'page transition ' + (slideFrom === 'right' ? 'stageLeft' : 'stageRight'));
-				// Slide in the new page
-				$(page.el).attr('class', 'page stageCenter transition');
-				self.currentPage = page;
-			});
-
+			// Slide out the current page: If new page slides from the right -> slide current page to the left, and vice versa
+			$(this.currentPage).attr('class', 'page transition ' + (slideFrom === 'right' ? 'stageLeft' : 'stageRight'));
+			// Slide in the new page
+			pageEl.attr('class', 'page stageCenter transition');
+			this.currentPage = page;
 		}
 
 	});

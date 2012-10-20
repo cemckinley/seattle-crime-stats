@@ -14,12 +14,16 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'views/home-page-view',
     'routes/app-router'
-], function($, _, Backbone, Router){
+], function($, _, Backbone, HomePage, Router){
     
 	var app = {
 
 		init: function(){
+
+			// views
+			this.homePage = new HomePage();
 
 			// routers
 			this.router = new Router();

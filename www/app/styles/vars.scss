@@ -1,3 +1,13 @@
+/*** Vars ***/
+
+$textColor: #423C37;
+$backgroundColor: #FCFBFA;
+$accentColor: saturate(darken($backgroundColor, 2%), 20%);
+
+$fontSlabSerif: "Rokkitt", "Didot", Georgia, Serif;
+$fontSansSerif: 'Futura-Medium', 'Helvetica', Sans-Serif;
+
+
 /*** Mixins ***/
 
 @mixin border-box () { 
@@ -43,6 +53,12 @@
 	-ms-transition: $property $duration $tween;
 	-o-transition: $property $duration $tween;
 	transition: $property $duration $tween;
+}
+
+@mixin transform ($args){
+	-webkit-transform: $args;
+	-moz-transform: $args;
+	transform: $args;
 }
 
 @mixin linear-gradient-vertical ($startColor: #ffffff, $stop1: 0%, $endColor: #000000, $stop2: 100%){

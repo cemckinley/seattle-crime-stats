@@ -3,14 +3,17 @@
 /* ----- DEFAULTS, CUSTOM BASIC TAGS, ICONS ----- */
 
 html{
-	width:100%;
-	height:100%;
+	width: 100%;
+  	height: 100%;
+	overflow: hidden;
 }
 
 body {
+	position: relative;
   	background: $backgroundColor;
-	width:100%;
-	height:100%;
+  	width: 100%;
+  	height: 100%;
+	overflow: hidden;
   	margin: 0;
   	font-size: 16px;
 	line-height: 22px;

@@ -1,5 +1,8 @@
 'use strict';
 
+/*global define: true */
+/*global Modernizr: true */
+
 /**
  *	APP BOOTSTRAP
  *
@@ -10,24 +13,30 @@
  *	@requires
  *		- require.js
  *		- app.js
+ *		- Modernizr
  */
 
+
 require.config({
-  shim: {
- 	'backbone': {
-        deps: ['underscore', 'jquery'],
-        exports: 'Backbone'
-    },
-    'underscore': {
-		exports: '_'
-    }
-  },
+	shim: {
+		'backbone': {
+			deps: ['underscore', 'jquery'],
+			exports: 'Backbone'
+		},
+		'underscore': {
+			exports: '_'
+		},
+		'modernizr': {
+			exports: 'Modernizr'
+		}
+	},
 
 paths: {
-    backbone: 'vendor/backbone',
-    underscore: 'vendor/underscore-min',
-    jquery: 'vendor/jquery.min'
-  }
+		backbone: 'vendor/backbone',
+		underscore: 'vendor/underscore-min',
+		jquery: 'vendor/jquery.min',
+		modernizr: 'vendor/modernizr.min'
+	}
 });
  
 require(['app', 'jquery'], function(app, $) {

@@ -9,6 +9,7 @@
         <title></title>
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -25,101 +26,107 @@
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
 
-        <section id="pageHome" class="page">
-            <div class="pageHeader">
-                <h1>Seattle Crime</h1>
-            </div>
-            
-            <div class="content">
-
-                <a href="#" class="btn" id="getDataBtn">Get Latest Reports</a>
-                <hr />
-                
-                <h2>[ Settings ]</h2>
-                <div>
-                    <div id="orderResultsBy">
-                        <span class="label">Order list view by:</span><br />
-                        <div class="toggleBtns">
-                            <a href="#" id="orderByDate" data-value="date" class="active">Date</a>
-                            <a href="#" id="orderByDistance" data-value="distance">Distance</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="maxResults">
-                    <label for="selectMaxResults" class="select">Max Results:</label><br />
-                    <div class="selectWrap">
-                        <select name="selectMaxResults" id="selectMaxResults">
-                            <option value="100">100</option>
-                            <option value="500">500</option>
-                            <option value="1000" selected="selected">1000</option>
-                            <option value="5000">5000</option>
-                        </select>
-                        <span class="icon dropDown"></span>
-                    </div>
-                </div>
-
-            </div>
-            
-            <div class="footer">
-                <a href="#/about" class="btn">About</a>
-            </div>
-        </section>
-        
-        <!-- ABOUT/DISCLAIMER PAGE -->
-        <section id="pageAbout" class="page stageRight">
-            <div class="pageHeader">
-                <a href="#welcome" class="backBtn">Back</a>
-                <h1>About</h1>
-            </div>
-            
-            <div class="content">
-                <h2>Terms &amp; Conditions</h2>
-                <p class="intro">All data appearing in this app is sourced from the City of Seattle's open data API.</p>
-                
-                <hr />
-                
-                <h3>Data Policy</h3>
-                <p>The data made available here has been modified for use from its original source, which is the City of Seattle. Neither the City of Seattle nor the Office of the Chief Technology Officer (OCTO) makes any claims as to the completeness, timeliness, accuracy or content of any data contained in this application; makes any representation of any kind, including, but not limited to, warranty of the accuracy or fitness for a particular use; nor are any such warranties to be implied or inferred with respect to the information or data furnished herein. The data is subject to change as modifications and updates are complete. It is understood that the information contained in the web feed is being used at one's own risk.</p>
-                <h3>Right to Discontinue Feeds</h3>
-                <p>The City of Seattle reserves the right to discontinue providing any or all of the data feeds at any time and to require the termination of any and all displaying, distributing or otherwise using any or all of the data for any reason including, without limitation, violation of any provision of these Terms of Use. The developer of this application is not responsible for any discontinuation or modifications of the data resulting from the actions of the City of Seattle.</p>
-                
-                <hr />
-                <p>Seattle Crime Stats mobile application by Cara McKinley.</p>
-            </div>
-        </section>
-        
-        <!-- CRIME DATA LIST PAGE -->
-        <section id="pageCrimeList" class="page stageRight">
-            <div class="pageHeader">
-                <a href="/" class="backBtn">Back</a>
-                <h1>Recent Crimes</h1>
-            </div>
-            <div class="content">
-            </div>
-            <div class="footer">
-                <a href="#/about" class="btn">About</a>
-            </div>
-        </section>
-        
-        <!-- INDIVIDUAL CRIME MAP -->
-        <div id="pageCrimeMap" class="page stageRight">
-            <div class="pageHeader">
-                <a href="#/crime-list" class="backBtn">Back</a>
-                <h1>Crime Map</h1>
-            </div>
-            <div class="content">
-                <h2 class="offenseType"></h2>
-                <div id="map_canvas">
-                </div>
-                <span class="offenseDate"><strong>Date: </strong></span>
-                <span class="offenseBlock"><strong>Block: </strong></span>
-            </div>
+    <section id="pageHome" class="page">
+        <div class="pageHeader">
+            <h1>Seattle Crime</h1>
         </div>
+        
+        <div class="content">
+
+            <a href="#" class="btn" id="getDataBtn">Get Latest Reports</a>
+            <hr />
+            
+            <h2>[ Settings ]</h2>
+            <div>
+                <div id="orderResultsBy">
+                    <span class="label">Order list view by:</span><br />
+                    <div class="toggleBtns">
+                        <a href="#" id="orderByDate" data-value="date" class="active">Date</a>
+                        <a href="#" id="orderByDistance" data-value="distance">Distance</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="maxResults">
+                <label for="selectMaxResults" class="select">Max Results:</label><br />
+                <div class="selectWrap">
+                    <select name="selectMaxResults" id="selectMaxResults">
+                        <option value="100">100</option>
+                        <option value="500">500</option>
+                        <option value="1000" selected="selected">1000</option>
+                        <option value="5000">5000</option>
+                    </select>
+                    <span class="icon dropDown"></span>
+                </div>
+            </div>
+
+        </div>
+    </section>
     
-    <script type="text/template" id="templateTest">
-        <p>Woooooooooooooot</p>
-    </script>
+    <!-- ABOUT/DISCLAIMER PAGE -->
+    <section id="pageAbout" class="page stageRight">
+        <div class="pageHeader">
+            <a href="#welcome" class="backBtn">Back</a>
+            <h1>About</h1>
+        </div>
+        
+        <div class="content">
+            <h2>Terms &amp; Conditions</h2>
+            <p class="intro">All data appearing in this app is sourced from the City of Seattle's open data API.</p>
+            
+            <hr />
+            
+            <h3>Data Policy</h3>
+            <p>The data made available here has been modified for use from its original source, which is the City of Seattle. Neither the City of Seattle nor the Office of the Chief Technology Officer (OCTO) makes any claims as to the completeness, timeliness, accuracy or content of any data contained in this application; makes any representation of any kind, including, but not limited to, warranty of the accuracy or fitness for a particular use; nor are any such warranties to be implied or inferred with respect to the information or data furnished herein. The data is subject to change as modifications and updates are complete. It is understood that the information contained in the web feed is being used at one's own risk.</p>
+            <h3>Right to Discontinue Feeds</h3>
+            <p>The City of Seattle reserves the right to discontinue providing any or all of the data feeds at any time and to require the termination of any and all displaying, distributing or otherwise using any or all of the data for any reason including, without limitation, violation of any provision of these Terms of Use. The developer of this application is not responsible for any discontinuation or modifications of the data resulting from the actions of the City of Seattle.</p>
+            
+            <hr />
+            <p>Seattle Crime Stats mobile application by Cara McKinley.</p>
+        </div>
+    </section>
+    
+    <!-- CRIME DATA LIST PAGE -->
+    <section id="pageCrimeList" class="page stageRight">
+        <div class="pageHeader">
+            <a href="/" class="backBtn">Back</a>
+            <h1>Recent Crimes</h1>
+        </div>
+        <div class="content">
+            <ul id="crimeList">
+                <script type="text/template" id="crimeItemTemplate">
+                    <li class="crimeItem">
+                        <a href="#" class="detailLink" data-id="<%= id %>">
+                            <strong class="offenseType"><%= offenseType %></strong>
+                            <span class="offenseDate"><%= date %></span>
+                            <span class="offenseBlock"><%= block %></span>
+                        </a>
+                    </li>
+                </script>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- INDIVIDUAL CRIME MAP -->
+    <div id="pageCrimeMap" class="page stageRight">
+        <div class="pageHeader">
+            <a href="#/crime-list" class="backBtn">Back</a>
+            <h1>Crime Map</h1>
+        </div>
+        <div class="content">
+            <h2 class="offenseType"></h2>
+            <div id="map_canvas">
+            </div>
+            <span class="offenseDate"><strong>Date: </strong></span>
+            <span class="offenseBlock"><strong>Block: </strong></span>
+        </div>
+    </div>
+
+    <div id="footer">
+        <a href="#/about" class="btn">About</a>
+    </div>
+
+    <div id="loadingIcon"><span class="icon"></span></div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="scripts/vendor/jquery.min.js"><\/script>')</script>

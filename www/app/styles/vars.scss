@@ -61,6 +61,25 @@ $fontSansSerif: 'Futura-Medium', 'Helvetica', Sans-Serif;
 	transform: $args;
 }
 
+@mixin animation ($name: myAnimation, $duration: 1s, $timing: linear, $iteration: infinite){
+	-webkit-animation-name: $name;
+	-moz-animation-name: $name;
+	-o-animation-name: $name;
+	animation-name: $name;
+	-webkit-animation-duration: $duration;
+	-moz-animation-duration: $duration;
+	-o-animation-duration: $duration;
+	animation-duration: $duration;
+	-webkit-animation-iteration-count: $iteration;
+	-moz-animation-iteration-count: $iteration;
+	-o-animation-iteration-count: $iteration;
+	animation-iteration-count: $iteration;
+	-webkit-animation-timing-function: $timing;
+	-moz-animation-timing-function: $timing;
+	-o-animation-timing-function: $timing;
+	animation-timing-function: $timing;
+}
+
 @mixin linear-gradient-vertical ($startColor: #ffffff, $stop1: 0%, $endColor: #000000, $stop2: 100%){
 	background: -moz-linear-gradient(top, $startColor $stop1, $endColor $stop2); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop($stop1,$startColor), color-stop($stop2,$endColor)); /* Chrome,Safari4+ */

@@ -51,7 +51,7 @@ define([
 		parse: function(response){
 			var rowData = response.data,
 				columns = response.meta.view.columns, // contains data about each column of the rowData rows returned
-				desiredColumns = [':id', 'offense_type', 'date_reported', 'hundred_block_location', 'longitude', 'latitude'], // field names for desired columns
+				desiredColumns = [':id', 'offense_type', 'summarized_offense_description','date_reported', 'hundred_block_location', 'longitude', 'latitude'], // field names for desired columns
 				columnFilter = [],
 				formattedData = [],
 				i,
@@ -71,15 +71,17 @@ define([
 			for (i=0, len=rowData.length; i < len; i++){
 				var dataId = rowData[i][columnFilter[0]],
 					dataOffenseType = rowData[i][columnFilter[1]],
-					dataDate = rowData[i][columnFilter[2]],
-					dataBlock = rowData[i][columnFilter[3]],
-					dataLongitude = parseFloat(rowData[i][columnFilter[4]]),
-					dataLatitude = parseFloat(rowData[i][columnFilter[5]]),
+					dataOffenseCategory = rowData[i][columnFilter[2]],
+					dataDate = rowData[i][columnFilter[3]],
+					dataBlock = rowData[i][columnFilter[4]],
+					dataLongitude = parseFloat(rowData[i][columnFilter[5]]),
+					dataLatitude = parseFloat(rowData[i][columnFilter[6]]),
 					dataDistance = this.userLocation ? (Math.pow(this.userLocation.latitude - dataLatitude, 2)) + (Math.pow(this.userLocation.longitude - dataLongitude, 2)) : 0;
 					
 				formattedData[i] = {
 					id: dataId,
 					offenseType: dataOffenseType,
+					offenseCategory: dataOffenseCategory,
 					date: this.formatDate(dataDate),
 					block: dataBlock,
 					longitude: dataLongitude,

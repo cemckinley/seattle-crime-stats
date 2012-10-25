@@ -24,7 +24,6 @@ define([
 		},
 
 		initialize: function(){
-			console.log('init');
 
 			this.pageHistory = []; // store page history to determine left/right panel action
 			this.currentPage = null;
@@ -32,6 +31,8 @@ define([
 			this.aboutPage = '#pageAbout';
 			this.crimeList = '#pageCrimeList';
 			this.crimeMap = '#pageCrimeMap';
+
+			_.extend(this, Backbone.Events);
 		},
 
 		showHome: function(){
@@ -39,6 +40,7 @@ define([
 		},
 
 		showCrimeList: function(){
+			this.trigger('viewChange:crimeList');
 			this.slidePage(this.crimeList);
 		},
 

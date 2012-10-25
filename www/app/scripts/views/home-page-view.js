@@ -13,36 +13,17 @@
 define([
 	'jquery',
 	'underscore',
-	'backbone',
-	'modernizr'
-], function($, _, Backbone, Modernizr){
+	'backbone'
+], function($, _, Backbone){
 
 	var HomePage = Backbone.View.extend({
 
 		el: '#pageHome',
-		events: function(){
-			
-			if(Modernizr.touch){
-				return {
-					'click #getDataBtn': 'onDataBtnClick'
-				};
-			}else{
-				return {
-					'click #getDataBtn': 'onDataBtnClick'
-				};
-			}
-		},
 
 		initialize: function(){
 
 			_.extend(this, Backbone.Events);
 
-		},
-
-		onDataBtnClick: function(e){
-			e.preventDefault();
-
-			this.trigger('dataRequest');
 		}
 
 	});

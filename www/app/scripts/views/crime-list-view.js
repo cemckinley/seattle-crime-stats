@@ -13,31 +13,78 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'collections/crime-collection',
 	'modernizr'
-], function($, _, Backbone, Modernizr){
+], function($, _, Backbone, CrimeCollection, Modernizr){
 
 	var CrimeListPage = Backbone.View.extend({
 
 		el: '#pageCrimeList',
-		collection: null, // should be passed in via extend on instantiation
 		template: _.template($('#crimeItemTemplate').html()),
 		currentIndex: 0,
 		maxPerPage: 20,
 		events: function(){
 			if(Modernizr.touch){
 				return {
-					'click #crimeList li': 'onCrimeItemClick'
+					'click #crimeList li a': 'onCrimeItemClick'
 				};
 			}else{
 				return {
-					'click #crimeList li': 'onCrimeItemClick'
+					'click #crimeList li a': 'onCrimeItemClick'
 				};
 			}
 		},
 
 		initialize: function(){
 
+			// el refs
 			this.crimeList = $('#crimeList');
+			this.loadingIcon = $('#loadingIcon');
+
+			// collections/models
+			this.collection = new CrimeCollection();
+
+			// event listeners
+			this.collection.on('reset', _.bind(this.onCrimeDataSuccess, this));
+			this.collection.on('error', _.bind(this.onCrimeDataError, this));
+			this.collection.on('locationError', _.bind(this.onLocationDataError, this));
+		},
+
+		/**
+		 * send new crime data request, empty crime list and set indexes to defaults
+		 */
+		requestNewData: function(){
+			console.log('data request');
+			this.currentIndex = 0;
+			this.crimeList.empty().hide();
+			this.loadingIcon.fadeIn(200);
+			this.collection.fetch();
+		},
+
+		/**
+		 * reset crimes list and render new data, hide loading icon, navigate to crime list page
+		 * @return {[type]} [description]
+		 */
+		onCrimeDataSuccess: function(){
+			this.render();
+			this.loadingIcon.fadeOut(200);
+		},
+
+		/**
+		 * error handler for data errors with data.seattle.gov
+		 */
+		onCrimeDataError: function(){
+			this.loadingIcon.fadeOut(200);
+			window.alert('Data services are temporarily unavailable. Please try again later.');
+		},
+
+		/**
+		 * error handler for geolocation data error
+		 */
+		onLocationDataError: function(){
+			this.render();
+			this.loadingIcon.fadeOut(200);
+			window.alert('Unable to use geolocation data for sorting crimes by distance. If you have disabled geolocation, please enable this feature in your browser.');
 		},
 
 		/**
@@ -50,15 +97,7 @@ define([
 				html += this.template(this.collection.at(i).toJSON());
 			}
 
-			this.crimeList.append(html);
-		},
-
-		/**
-		 * empty crime list and set indexes to defaults
-		 */
-		reset: function(){
-			this.currentIndex = 0;
-			this.crimeList.empty();
+			this.crimeList.append(html).fadeIn(200);
 		},
 
 		/**
@@ -70,7 +109,7 @@ define([
 			var itemId = $(e.currentTarget).attr('data-id');
 			e.preventDefault();
 
-			this.trigger('requestCrimeDetail', itemId);
+			this.trigger('crimeDetailRequest', itemId);
 		}
 
 	});

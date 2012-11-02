@@ -19,7 +19,7 @@ define([
 		routes: {
 		  '': 'showHome',
 		  'crime-list': 'showCrimeList',
-		  'crime-map': 'showCrimeMap',
+		  'crime/:id': 'showCrimeDetail',
 		  'about': 'showAbout'
 		},
 
@@ -44,7 +44,8 @@ define([
 			this.slidePage(this.crimeList);
 		},
 
-		showCrimeMap: function(){
+		showCrimeDetail: function(id){
+			this.trigger('viewChange:crimeDetail', id);
 			this.slidePage(this.crimeMap);
 		},
 

@@ -26,7 +26,7 @@ define([
 
 		initialize: function(){
 
-			this.getUserCoords();
+			this.userLocation = this.getUserCoords();
 
 		},
 
@@ -57,7 +57,6 @@ define([
 				i,
 				len;
 			
-			console.log(response);
 			// grab the index of the columns that have the field names we're looking for (the table schema is always changing...)
 			for (i=0, len=columns.length; i < len; i++){
 				for (var j=0, len2=desiredColumns.length; j < len2; j++){
@@ -94,7 +93,8 @@ define([
 		},
 
 		getUserCoords: function(){
-			var self = this;
+			var self = this,
+				coords;
 
 			navigator.geolocation.getCurrentPosition(
 				function (position) {
@@ -105,7 +105,7 @@ define([
 						self.trigger('locationError');
 					
 					}else{
-						self.userLocation = {
+						coords = {
 							latitude: lat,
 							longitude: lon
 						};
@@ -115,6 +115,8 @@ define([
 					self.trigger('locationError');
 				}
 			);
+
+			return coords;
 		},
 
 		/**

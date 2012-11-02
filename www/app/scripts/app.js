@@ -14,10 +14,13 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'collections/crime-collection',
+	'models/crime-model',
 	'views/home-page-view',
 	'views/crime-list-view',
+	'views/crime-detail-view',
 	'routes/app-router'
-], function($, _, Backbone, HomePage, CrimeListPage, Router){
+], function($, _, Backbone, CrimeCollection, CrimeModel, HomePage, CrimeListPage, CrimeDetailView, Router){
 	
 	var app = {
 
@@ -26,11 +29,16 @@ define([
 			// el refs
 			this.loadingIcon = $('#loadingIcon');
 
+			// collections/models
+			this.collection = new CrimeCollection();
+
 			// views
 			this.homePage = new HomePage();
 			this.crimeListPage = new CrimeListPage({
+				collection: this.collection,
 				loadingIcon: this.loadingIcon
 			});
+			this.crimeDetailView = null; // will be instantiated on each crime item click
 
 			// router
 			this.router = new Router();
@@ -38,7 +46,7 @@ define([
 			// events
 			_.extend(this, Backbone.Events);
 			this.router.on('viewChange:crimeList', _.bind(this.requestData, this));
-			this.crimeListPage.on('crimeDetailRequest', _.bind(this.requestCrimeDetail, this));
+			this.router.on('viewChange:crimeDetail', _.bind(this.createCrimeDetail, this));
 
 			// setup
 			Backbone.history.start();
@@ -52,10 +60,25 @@ define([
 		},
 
 		/**
-		 * send request for specific crime detail page
+		 * create new view instance of crime detail page
 		 */
-		requestCrimeDetail: function(crimeId){
-			console.log(crimeId);
+		createCrimeDetail: function(crimeId){
+			var model = this.collection.get(crimeId);
+
+			if (this.crimeDetailView){ this.crimeDetailView.remove(); } // delete existing crime detail view
+
+			if(!model){ // if model doesn't exist in collection, create new instance and fetch data
+				model = new CrimeModel({
+					id: crimeId
+				});
+				model.fetch();
+				this.collection.add(model, {silent: true});
+			}
+
+			this.crimeDetailView = new CrimeDetailView({
+				model: model,
+			});
+			this.crimeDetailView.render();
 		}
 
 	};

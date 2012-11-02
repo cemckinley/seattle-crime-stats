@@ -12,37 +12,22 @@
 define([
 	'jquery',
 	'underscore',
-	'backbone',
-	'collections/crime-collection',
-	'modernizr'
-], function($, _, Backbone, CrimeCollection, Modernizr){
+	'backbone'
+], function($, _, Backbone){
 
 	var CrimeListPage = Backbone.View.extend({
 
 		el: '#pageCrimeList',
 		template: _.template($('#crimeItemTemplate').html()),
+		collection: null, // passed in on instantiation
 		currentIndex: 0,
 		maxPerPage: 20,
-		events: function(){
-			if(Modernizr.touch){
-				return {
-					'click #crimeList li a': 'onCrimeItemClick'
-				};
-			}else{
-				return {
-					'click #crimeList li a': 'onCrimeItemClick'
-				};
-			}
-		},
 
 		initialize: function(){
 
 			// el refs
 			this.crimeList = $('#crimeList');
 			this.loadingIcon = $('#loadingIcon');
-
-			// collections/models
-			this.collection = new CrimeCollection();
 
 			// event listeners
 			this.collection.on('reset', _.bind(this.onCrimeDataSuccess, this));
@@ -54,7 +39,6 @@ define([
 		 * send new crime data request, empty crime list and set indexes to defaults
 		 */
 		requestNewData: function(){
-			console.log('data request');
 			this.currentIndex = 0;
 			this.crimeList.empty().hide();
 			this.loadingIcon.fadeIn(200);
@@ -92,24 +76,11 @@ define([
 		 */
 		render: function(){
 			var html = '';
-			console.log(this.collection);
 			for(var i = this.currentIndex, len = this.maxPerPage; i < len; i++){
 				html += this.template(this.collection.at(i).toJSON());
 			}
 
 			this.crimeList.append(html).fadeIn(200);
-		},
-
-		/**
-		 * event handler for clicks on individual crime items; triggers event to request crime item detail
-		 * @param  {[type]} e [description]
-		 * @return {[type]}   [description]
-		 */
-		onCrimeItemClick: function(e){
-			var itemId = $(e.currentTarget).attr('data-id');
-			e.preventDefault();
-
-			this.trigger('crimeDetailRequest', itemId);
 		}
 
 	});

@@ -32,11 +32,17 @@ require.config({
 	},
 
 paths: {
+		async: 'vendor/requirejs-plugins/async',
 		backbone: 'vendor/backbone',
 		underscore: 'vendor/underscore-min',
 		jquery: 'vendor/jquery.min',
 		modernizr: 'vendor/modernizr.min'
 	}
+});
+
+// asyc load and define google maps api as a module, requires the require.js async plugin
+define('gmaps', ['async!http://maps.google.com/maps/api/js?key=AIzaSyAEk95HT9mNZ0JA0e6UD2zAymGYb0wlZwY&sensor=true'], function(){
+	return google;
 });
  
 require(['app', 'jquery'], function(app, $) {

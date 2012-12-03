@@ -88,7 +88,7 @@ define([
 					distance: dataDistance
 				};
 			}
-
+			
 			return formattedData;
 		},
 

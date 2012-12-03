@@ -22,16 +22,26 @@ define([
 		userLocation: null,
 
 		/**
-		 * custom fetch decorator - formats url on the fly before making request, based on id passed in hash
+		 * custom ajax call to get individual record - formats url on the fly before making request
+		 * because data.seattle.gov individual records are formatted differently than a collection of records, using custom data request and parse so these methods dont get called on each model when collection updates
+		 *
 		 * @param  {object} opts [extends standard Backbone object, see http://backbonejs.org/#Collection-fetch]
 		 * @return {[type]}      [returns whatever Backbone.Collection.fetch normally returns]
 		 */
-		fetch: function(options){
-			options = _.extend(options || {}, {
-				url: this.url + this.id + '.json?jsonp=?'
-			});
+		getRecord: function(){
+			var self = this;
 
-			return Backbone.Model.prototype.fetch.apply(this, [options]);
+			$.ajax({
+				type: 'GET',
+				dataType: 'json',
+				url: this.url + this.id + '.json?jsonp=?',
+				error: function(error){
+					console.log(error);
+				},
+				success: function(data){
+					self.parseSingle(data);
+				}
+			});
 		},
 
 		/**
@@ -39,7 +49,7 @@ define([
 		 * @param  {object} response [data object from ajax response (from fetch)]
 		 * @return {array}          [formatted data array of objects]
 		 */
-		parse: function(response){
+		parseSingle: function(response){
 			var rowData = response,
 				dataLongitude = parseFloat(rowData.longitude),
 				dataLatitude = parseFloat(rowData.latitude),
@@ -53,8 +63,8 @@ define([
 					latitude: dataLatitude,
 					distance: 0
 				};
-
-			return formattedData;
+				
+			this.set(formattedData);
 		},
 
 		/**

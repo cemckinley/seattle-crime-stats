@@ -63,7 +63,8 @@ define([
 		 * create new view instance of crime detail page
 		 */
 		createCrimeDetail: function(crimeId){
-			var model = this.collection.get(crimeId);
+			var model = this.collection.get(crimeId),
+				renderOnCreation = true;
 
 			if (this.crimeDetailView){ this.crimeDetailView.remove(); } // delete existing crime detail view
 
@@ -71,14 +72,16 @@ define([
 				model = new CrimeModel({
 					id: crimeId
 				});
-				model.fetch();
+				
+				model.getRecord();
 				this.collection.add(model, {silent: true});
+				renderOnCreation = false;
 			}
 
 			this.crimeDetailView = new CrimeDetailView({
 				model: model,
+				renderOnCreation: renderOnCreation // option flag - true if model already exists and no data request needed
 			});
-			this.crimeDetailView.render();
 		}
 
 	};

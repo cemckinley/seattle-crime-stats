@@ -22,7 +22,7 @@
         <script src="scripts/vendor/modernizr.min.js"></script>
     </head>
     <body>
-    <!--[if lt IE 7]>
+    <!--[if lt IE 9]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
 
@@ -89,7 +89,7 @@
     <!-- CRIME DATA LIST PAGE -->
     <section id="pageCrimeList" class="page stageRight">
         <div class="pageHeader">
-            <a href="/" class="backBtn">Back</a>
+            <a href="/#" class="backBtn">Back</a>
             <h1>Recent Crimes</h1>
         </div>
         <div class="content">
@@ -101,7 +101,7 @@
     <!-- INDIVIDUAL CRIME MAP -->
     <section id="pageCrimeMap" class="page stageRight">
         <div class="pageHeader">
-            <a href="#/crime-list" class="backBtn">Back</a>
+            <a href="#crime-list" class="backBtn">List</a>
             <h1>Crime Map</h1>
         </div>
         <div class="content">
@@ -110,7 +110,7 @@
     </section>
 
     <div id="footer">
-        <a href="#/about" class="btn">About</a>
+        <a href="#about" class="btn">About</a>
     </div>
 
     <div id="loadingIcon"><span class="icon"></span></div>
@@ -121,7 +121,7 @@
     <!-- crime list view item template -->
     <script type="text/template" id="crimeItemTemplate">
         <li class="crimeItem">
-            <a href="#/crime/<%= id %>" class="detailLink" data-id="<%= id %>">
+            <a href="#crime/<%= id %>" class="detailLink" data-id="<%= id %>">
                 <strong class="offenseType"><%= offenseType %></strong>
                 <span class="offenseDate"><%= date %></span>
                 <span class="offenseBlock"><%= block %></span>

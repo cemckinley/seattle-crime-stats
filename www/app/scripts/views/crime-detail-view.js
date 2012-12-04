@@ -18,16 +18,20 @@ define([
 
 	var CrimeDetailView = Backbone.View.extend({
 
-		el: '#pageCrimeMap .content',
 		template: _.template($('#crimeDetailTemplate').html()),
 
 		initialize: function(){
 
-			if(this.options.renderOnCreation){ this.render(); } // option passed in on view instantiation in app.js if data is already present, no data request needed
+			// el refs
+			this.container = $('#pageCrimeMap .content');
 
 			// event listeners
 			this.model.on('change', _.bind(this.onCrimeDataSuccess, this));
 			this.model.on('error', _.bind(this.onCrimeDataError, this));
+
+			// setup
+			if(this.options.renderOnCreation){ this.render(); } // option passed in on view instantiation in app.js if data is already present, no data request needed
+
 		},
 
 		/**
@@ -48,7 +52,7 @@ define([
 		render: function(){
 			var html = this.template(this.model.attributes);
 
-			this.$el.html(html);
+			this.container.html(html);
 			this.getMap();
 		},
 
@@ -58,7 +62,7 @@ define([
 		getMap: function(){
 			var mapLocation = new gmaps.maps.LatLng(this.model.get('latitude'), this.model.get('longitude')),
 				mapSize = {
-					width: parseInt(this.$el.width() * 0.95, 10),
+					width: parseInt(this.container.width() * 0.95, 10),
 					height: $(window).height() * 0.7
 				},
 				mapOptions = {

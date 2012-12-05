@@ -166,6 +166,17 @@
 
 #pageCrimeList{
 
+	#crimeListReloadBtn{
+		position: absolute;
+		top: 50%;
+		margin-top: -13px;
+		right: 10px;
+		display: block;
+		height: 25px;
+		width: 25px;
+		background: url('../images/icon-reload.svg') no-repeat 0 0;
+		background-size: 25px 25px;
+	}
 	.content{
 		padding: 0;
 	}

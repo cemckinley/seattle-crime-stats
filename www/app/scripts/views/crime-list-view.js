@@ -22,6 +22,7 @@ define([
 		collection: null, // passed in on instantiation
 		currentIndex: 0,
 		maxPerPage: 20,
+		dataReceived: false,
 
 		initialize: function(){
 
@@ -33,6 +34,16 @@ define([
 			this.collection.on('reset', _.bind(this.onCrimeDataSuccess, this));
 			this.collection.on('error', _.bind(this.onCrimeDataError, this));
 			this.collection.on('locationError', _.bind(this.onLocationDataError, this));
+		},
+
+		/**
+		 * check if data has already been requested, if not, request new data. Otherwise do nothing (router handlers panel transitions)
+		 * @return {[type]} [description]
+		 */
+		showList: function(){
+			if(!this.dataReceived){
+				this.requestNewData();
+			}
 		},
 
 		/**
@@ -50,6 +61,7 @@ define([
 		 * @return {[type]} [description]
 		 */
 		onCrimeDataSuccess: function(){
+			this.dataReceived = true;
 			this.render();
 			this.loadingIcon.fadeOut(200);
 		},

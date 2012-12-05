@@ -45,7 +45,7 @@ define([
 
 			// events
 			_.extend(this, Backbone.Events);
-			this.router.on('viewChange:crimeList', _.bind(this.requestData, this));
+			this.router.on('viewChange:crimeList', _.bind(this.showCrimeList, this));
 			this.router.on('viewChange:crimeDetail', _.bind(this.createCrimeDetail, this));
 
 			// setup
@@ -55,8 +55,8 @@ define([
 		/**
 		 * request crime data from model collection, show loading icon
 		 */
-		requestData: function(){
-			this.crimeListPage.requestNewData();
+		showCrimeList: function(){
+			this.crimeListPage.showList();
 		},
 
 		/**

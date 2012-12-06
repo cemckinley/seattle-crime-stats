@@ -16,7 +16,6 @@
  *		- Modernizr
  */
 
-
 require.config({
 	shim: {
 		'backbone': {
